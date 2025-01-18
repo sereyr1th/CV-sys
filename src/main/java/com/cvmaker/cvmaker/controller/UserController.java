@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cvmaker.cvmaker.dto.UserDto;
 import com.cvmaker.cvmaker.service.UserService;
 
-@RestController  // Change to @RestController since it's handling REST APIs
+@RestController
 @RequestMapping("/api")
 public class UserController {
 
@@ -24,6 +24,16 @@ public class UserController {
         try {
             userService.registerUser(userDto);
             return ResponseEntity.ok("User registered successfully");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/register-admin")
+    public ResponseEntity<String> registerAdmin(@RequestBody UserDto userDto) {
+        try {
+            userService.registerAdmin(userDto);
+            return ResponseEntity.ok("Admin registered successfully");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

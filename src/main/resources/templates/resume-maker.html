@@ -19,10 +19,9 @@
             <div class="flex justify-between mb-2">
                 <span class="step-indicator text-sm font-medium text-blue-600">Personal Details</span>
                 <span class="step-indicator text-sm font-medium text-gray-400">Experience</span>
-                <span class="step-indicator text-sm font-medium text-gray-400">Choose Template</span>
             </div>
             <div class="h-2 bg-gray-200 rounded-full">
-                <div class="progress-bar h-2 bg-blue-600 rounded-full transition-all duration-500" style="width: 33%"></div>
+                <div class="progress-bar h-2 bg-blue-600 rounded-full transition-all duration-500" style="width: 50%"></div>
             </div>
         </div>
 
@@ -75,19 +74,19 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Institution</label>
-                                        <input type="text" name="institution" class="w-full p-2 border border-gray-300 rounded-md">
+                                        <input type="text" name="institution[0]" class="w-full p-2 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Degree</label>
-                                        <input type="text" name="degree" class="w-full p-2 border border-gray-300 rounded-md">
+                                        <input type="text" name="degree[0]" class="w-full p-2 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
-                                        <input type="month" name="eduStartDate" class="w-full p-2 border border-gray-300 rounded-md">
+                                        <input type="month" name="eduStartDate[0]" class="w-full p-2 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
-                                        <input type="month" name="eduEndDate" class="w-full p-2 border border-gray-300 rounded-md">
+                                        <input type="month" name="eduEndDate[0]" class="w-full p-2 border border-gray-300 rounded-md">
                                     </div>
                                 </div>
                                 <button type="button" class="text-red-600 text-sm mt-2 hover:text-red-700" onclick="removeEntry(this)">Remove</button>
@@ -106,23 +105,23 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Company</label>
-                                        <input type="text" name="company" class="w-full p-2 border border-gray-300 rounded-md">
+                                        <input type="text" name="company[0]" class="w-full p-2 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Position</label>
-                                        <input type="text" name="position" class="w-full p-2 border border-gray-300 rounded-md">
+                                        <input type="text" name="position[0]" class="w-full p-2 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
-                                        <input type="month" name="workStartDate" class="w-full p-2 border border-gray-300 rounded-md">
+                                        <input type="month" name="workStartDate[0]" class="w-full p-2 border border-gray-300 rounded-md">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">End Date</label>
-                                        <input type="month" name="workEndDate" class="w-full p-2 border border-gray-300 rounded-md">
+                                        <input type="month" name="workEndDate[0]" class="w-full p-2 border border-gray-300 rounded-md">
                                     </div>
                                     <div class="md:col-span-2">
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                                        <textarea name="description" rows="3" class="w-full p-2 border border-gray-300 rounded-md"></textarea>
+                                        <textarea name="description[0]" rows="3" class="w-full p-2 border border-gray-300 rounded-md"></textarea>
                                     </div>
                                 </div>
                                 <button type="button" class="text-red-600 text-sm mt-2 hover:text-red-700" onclick="removeEntry(this)">Remove</button>
@@ -137,39 +136,15 @@
                         <button type="button" onclick="handleStepChange(1)" class="text-gray-600 px-6 py-2 rounded-md border hover:bg-gray-50">
                             Previous
                         </button>
-                        <button type="button" onclick="handleStepChange(3)" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
-                            Next Step
+                        <button type="button" onclick="generateResume()" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
+                            Generate Resume
                         </button>
                     </div>
                 </form>
             </div>
         </div>
-
-        <!-- Step 3: Choose Template -->
-        <div id="step3" class="step hidden">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-bold mb-6">Choose Template</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="template border rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer">
-                        <h3 class="font-semibold text-lg mb-2">Template 1</h3>
-                        <div class="h-32 bg-gray-100 rounded"></div>
-                    </div>
-                    <div class="template border rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer">
-                        <h3 class="font-semibold text-lg mb-2">Template 3</h3>
-                        <div class="h-32 bg-gray-100 rounded"></div>
-                    </div>
-                </div>
-                <div class="flex justify-between mt-6">
-                    <button type="button" onclick="handleStepChange(2)" class="text-gray-600 px-6 py-2 rounded-md border hover:bg-gray-50">
-                        Previous
-                    </button>
-                    <button type="button" onclick="generateResume()" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
-                        Generate Resume
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
+
     <script>
         function handleStepChange(step) {
             document.querySelectorAll('.step').forEach(el => el.classList.add('hidden'));
@@ -196,6 +171,16 @@
             // Clear input values
             newEntry.querySelectorAll('input, textarea').forEach(input => input.value = '');
             list.appendChild(newEntry);
+
+            // Update the name attributes to ensure unique keys
+            const index = list.querySelectorAll(`.${entryClass}`).length - 1;
+            newEntry.querySelectorAll('input, textarea').forEach(input => {
+                const name = input.getAttribute('name');
+                if (name) {
+                    const newName = name.replace(/\[\d+\]/, `[${index}]`);
+                    input.setAttribute('name', newName);
+                }
+            });
         }
 
         function removeEntry(button) {
@@ -204,9 +189,30 @@
         }
 
         function generateResume() {
-            alert('Resume generation coming soon!');
+            const personalDetailsForm = document.getElementById('personalDetailsForm');
+            const experienceForm = document.getElementById('experienceForm');
+
+            const formData = new FormData();
+            new FormData(personalDetailsForm).forEach((value, key) => formData.append(key, value));
+            new FormData(experienceForm).forEach((value, key) => formData.append(key, value));
+
+            fetch('/api/resumes/generate-pdf', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'resume.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => console.error('Error:', error));
         }
     </script>
 </body>
 </html>
-    

@@ -4,17 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Register</h1>
-    <form action="/api/register" method="POST">
-        <input type="email" name="email" placeholder="Enter Email" required />
-        <input type="password" name="password" placeholder="Enter Password" required />
-        <button type="submit">Register</button>
-    </form>
-    
-    <div>
-        <a th:href="@{/login}">Back to Login</a>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6">Register</h1>
+        <form id="registerForm" class="space-y-4">
+            <div>
+                <input type="email" id="email" name="email" placeholder="Enter Email" required class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+            </div>
+            <div>
+                <input type="password" id="password" name="password" placeholder="Enter Password" required class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+            </div>
+            <div>
+                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">Register</button>
+            </div>
+        </form>
+        <div class="mt-4">
+            <a th:href="@{/login}" class="text-blue-600 hover:text-blue-700">Back to Login</a>
+        </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#registerForm').on('submit', function(event) {
+                event.preventDefault();
+
+                const formData = {
+                    email: $('#email').val(),
+                    password: $('#password').val()
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/register',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(response) {
+                        alert('User registered successfully');
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
