@@ -1,12 +1,9 @@
 package com.cvmaker.cvmaker.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import com.cvmaker.cvmaker.entity.User;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
     boolean existsByEmail(String email);
     User findByEmail(String email);
 }

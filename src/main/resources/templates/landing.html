@@ -4,76 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV Maker</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <style>
-        body {
-            background-image: url('/static/images/background.jpg');
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .logo {
-            font-size: 2em;
-            font-weight: bold;
-        }
-        .nav-links a {
-            margin: 0 15px;
-            color: #fff;
-            text-decoration: none;
-        }
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-        main {
-            text-align: center;
-            padding: 50px;
-            background-color: rgba(0, 0, 0, 0.5);
-            margin: 20px;
-            border-radius: 10px;
-        }
-        button {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">cv.io</div>
-            <div class="nav-links">
-                <a href="https://github.com">Github</a>
-                <a href="/login">Login</a>
-                <a href="/admin">Admin</a>
+    <!-- <link rel="stylesheet" href="/static/css/styles.css"> -->
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head> 
+<body class="h-screen">
+    <header class="bg-blue-700 h-12 pt-1">
+        <nav class="container mx-auto flex justify-between items-center">
+            <div class="text-white hover:text-blue-700 text-3xl font-bold" >cv.io</div>
+            <div class="nav-links ">
+                    
+                    <a href="https://github.com/sereyr1th/CV-sys" class="mr-6 text-white bg-black hover:bg-gray-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-black dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-black">Github</a>
+                    <a href="/login" class="pr-4 font-medium text-white dark:text-white hover:underline">Login</a>
+                    <a href="/admin" class="pr-4 font-medium text-white dark:text-white hover:underline">Admin</a>
             </div>
         </nav>
     </header>
-    <main>
-        <h1>Design your professional CV seamlessly with our CV maker tool.</h1>
-        <p>Create your very own professional resume with ease and download it in a matter of minutes, ensuring a seamless and efficient experience.</p>
-        <button onclick="window.location.href='/resume-maker';">Create Resume</button>
+    <main class="bg-gray-600 h-full p-6 text-center">
+        <h1 class="  text-3xl font-bold leading-normal text-gray-900 dark:text-white pb-3">Design your professional CV seamlessly with our CV maker tool.</h1>
+        <p class="text-lg text-gray-900 dark:text-white pb-20">Create your very own professional resume with ease and download it in a matter of minutes, ensuring a seamless and efficient experience.</p>
+        <button onclick="window.location.href='/resume-maker';" 
+        class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-xl px-5 py-2.5 text-center me-2 mb-2">Create Resume</button>
     </main>
-    <footer>
+    <footer class="h-12 bg-black text-white p-2 text-center">
         <p>&copy; STEP Academy, Kunvuth Sereyrith. All rights reserved.</p>
-    </footer>
+    </footer>   
 </body>
 </html>

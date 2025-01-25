@@ -1,16 +1,14 @@
 package com.cvmaker.cvmaker.controller;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.cvmaker.cvmaker.dto.UserDto;
 import com.cvmaker.cvmaker.service.UserService;
 
-@RestController
-@RequestMapping("/api")
+@Controller
 public class UserController {
 
     private final UserService userService;
@@ -19,23 +17,20 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody UserDto userDto) {
-        try {
-            userService.registerUser(userDto);
-            return ResponseEntity.ok("User registered successfully");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    @GetMapping("/register")
+    public String showRegisterForm(Model model) {
+        model.addAttribute("user", new UserDto());
+        return "register";
     }
 
-    @PostMapping("/register-admin")
-    public ResponseEntity<String> registerAdmin(@RequestBody UserDto userDto) {
+    @PostMapping("/register")
+    public String registerUser(UserDto userDto, Model model) {
         try {
-            userService.registerAdmin(userDto);
-            return ResponseEntity.ok("Admin registered successfully");
+            userService.registerUser(userDto);
+            return "redirect:/login";
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            model.addAttribute("error", e.getMessage());
+            return "register";
         }
     }
 }
